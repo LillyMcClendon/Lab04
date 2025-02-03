@@ -18,32 +18,56 @@ states <- read_csv("data/states.csv")
 ```
 
 ### Exercise 1
+```{r Denny's-dataset-dimensions}
+nrow(dennys)
+ncol(dennys)
+```
 
-Remove this text, and add your answer for Exercise 1 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r Denny's-dataset-skim}
+str(dennys)
+```
+
+#### Denny's dataset dimensions
+
+The Denny's dataset dimensions are 1643 x 6, contains 1643 rows with each row representing a Denny's location and 6 columns (address, city, state, zip, longitude, and latitude). The variables are address, city, state, zip, longitude, and latitude. 
+
 
 ### Exercise 2
 
-Remove this text, and add your answer for Exercise 2 here.
-Add code chunks as needed.
-Don't forget to label your code chunk.
-Do not use spaces in code chunk labels.
+```{r laquinta-dataset-dimensions}
+nrow(laquinta)
+ncol(laquinta)
+```
+
+```{r laquinta-dataset-skim}
+str(laquinta)
+```
+
+#### La Quinta dataset dimensions
+
+The La Quinta dataset dimensions are 909 x 6, contains 909 rows with each row representing a La Quinta hotel and 6 columns (address, city, state, zip, longitude, and latitude). The variables are address, city, state, zip, longitude, and latitude. 
 
 ### Exercise 3
-
-...
+ 
+There are La Quinta locations outside of the U.S. in Canada, Mexico, China, New Zealand, Turkey, United Arab Emirates, Chile, Columbia, and Ecuador. On the other hand, there are no Denny's located outside of the U.S.
 
 ### Exercise 4
 
-...
+One way I would dertermine whether of not either esatblishment has any locations outside of the U.S. solely using the data would be by the zip code. Zip codes are unique to the U.S. as they are managed by the United States Postal Service. If there is a missing value or NA for zip code, one could make the connection that the location is not located in the U.S. 
 
 ### Exercise 5
 
-...
+```{r dennys-outside-US}
+dennys %>%
+  filter(!(state %in% states$abbreviation))
+```
+
+There are not any Denny's locations outside of the U.S. 
 
 ### Exercise 6
+```{r dennys-add-country-variable}
+dn %>%
+  mutate(country = "United States")
 
 ...
 
