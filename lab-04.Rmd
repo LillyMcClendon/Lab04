@@ -31,7 +31,6 @@ str(dennys)
 
 The Denny's dataset dimensions are 1643 x 6, contains 1643 rows with each row representing a Denny's location and 6 columns (address, city, state, zip, longitude, and latitude). The variables are address, city, state, zip, longitude, and latitude. 
 
-
 ### Exercise 2
 
 ```{r laquinta-dataset-dimensions}
@@ -66,11 +65,56 @@ There are not any Denny's locations outside of the U.S.
 
 ### Exercise 6
 ```{r dennys-add-country-variable}
-dn %>%
+dennys %>%
   mutate(country = "United States")
+```
 
-...
+### Exercise 7
 
- 
-Add exercise headings as needed.
+La Quinta has locations Canada, Chile, China, Columbia, Ecuador, Mexico, New Zealand, Turkey, and United Arab Emirates. 
+
+### Exercise 8
+
+```{r laquinta-summarize}
+library(dplyr)
+laquinta %>%
+summarize(state)
+```
+```{r laquinta-table}
+state_counts <- table(laquinta$state)
+print(state_counts)
+```
+
+```{r filterforint}
+library(dplyr)
+laquinta_international <- laquinta %>% 
+  filter(!state %in% state.abb)
+print(laquinta_international)
+```
+
+#### La Quinta Locations Update 
+
+There are locations (Cancun, Apodaca, Monterrey, Tegucigalpa) in the dataset that are not posted on the La Quinta website of locations. 
+
+```{r laquinta-locations-outside-us-variable}
+laquinta %>%
+  mutate(country = case_when(
+    state %in% state.abb ~ "United States",
+    state %in% c("ON", "BC") ~ "Canada",
+    state == "ANT" ~ "Colombia",
+    state %in% c("AG", "QR", "CH", "NL","VE", "PU", "SL") ~"Mexico", 
+    state == "FM" ~ "Honduras"
+  )) %>% 
+filter(country == "United States")
+```
+
+
+### Exercise 9
+
+### Exercise 10
+
+### Exercise 11
+
+### Exercise 12
+
 
