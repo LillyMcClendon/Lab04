@@ -97,7 +97,7 @@ print(laquinta_international)
 There are locations (Cancun, Apodaca, Monterrey, Tegucigalpa) in the dataset that are not posted on the La Quinta website of locations. 
 
 ```{r laquinta-locations-outside-us-variable}
-laquinta %>%
+laquinta_country <- laquinta %>%
   mutate(country = case_when(
     state %in% state.abb ~ "United States",
     state %in% c("ON", "BC") ~ "Canada",
@@ -106,10 +106,31 @@ laquinta %>%
     state == "FM" ~ "Honduras"
   )) %>% 
 filter(country == "United States")
+print(laquinta_country)
 ```
 
 
 ### Exercise 9
+
+```{r Dennys-state-most-locations}
+dennys %>% 
+  count(state) %>% 
+  arrange(desc(n))
+```
+
+```{r laquinta-state-most-locations}
+laquinta_country %>% 
+  count(state) %>% 
+  arrange(desc(n))
+```
+
+#### States with most and least Denny's locations 
+
+California has the most (403) Denny's locations and Delaware has the least (1) Denny's locations. I don't find this surprising as California has the greatest population of all the states and has many tourist attractions which leads to more amenities. On the other hand, Delaware has one of the lowest populations, so it seems logical that there would be fewer Denny's locations. 
+
+#### States with most and least La Quinta locations. 
+
+Texas has the most La Quinta locations, which I don't find surprising as Texas has the second highest population in the U.S., and the La Quinta headquarters are in Texas. 
 
 ### Exercise 10
 
