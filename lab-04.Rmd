@@ -94,7 +94,7 @@ print(laquinta_international)
 
 #### La Quinta Locations Update 
 
-There are locations (Cancun, Apodaca, Monterrey, Tegucigalpa) in the dataset that are not posted on the La Quinta website of locations. 
+There are locations (Cancun, Apodaca, Monterrey, Tegucigalpa) in the dataset that are not posted on the La Quinta website of locations. I looked up the addresses to determine which country they were located in. 
 
 ```{r laquinta-locations-outside-us-variable}
 laquinta_country <- laquinta %>%
