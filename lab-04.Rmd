@@ -52,7 +52,7 @@ There are La Quinta locations outside of the U.S. in Canada, Mexico, China, New 
 
 ### Exercise 4
 
-I could determine whether of not either establishment has any locations outside of the U.S. solely using the data by filtering for states that appear in the states data set with abbreviations.I could also determine which longitude and latitudes form the bounds of the U.S., and filter for data that is located within those parameters. 
+I could determine whether or not either establishment has any locations outside of the U.S. solely using the data by filtering for states that appear in the states data set with abbreviations.I could also determine which longitude and latitudes form the bounds of the U.S., and filter for data that is located within those parameters. 
 
 ### Exercise 5
 
@@ -65,7 +65,7 @@ There are not any Denny's locations outside of the U.S.
 
 ### Exercise 6
 ```{r dennys-add-country-variable}
-dennys %>%
+dennys_country <- dennys %>%
   mutate(country = "United States")
 ```
 

@@ -107,12 +107,11 @@ U.S.
 
 ### Exercise 4
 
-One way I would dertermine whether of not either esatblishment has any
-locations outside of the U.S. solely using the data would be by the zip
-code. Zip codes are unique to the U.S. as they are managed by the United
-States Postal Service. If there is a missing value or NA for zip code,
-one could make the connection that the location is not located in the
-U.S.
+I could determine whether or not either establishment has any locations
+outside of the U.S. solely using the data by filtering for states that
+appear in the states data set with abbreviations.I could also determine
+which longitude and latitudes form the bounds of the U.S., and filter
+for data that is located within those parameters.
 
 ### Exercise 5
 
