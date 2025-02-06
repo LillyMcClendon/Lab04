@@ -165,7 +165,7 @@ ggplot(dn_lq) +
 ```{r nc-dennys-laquinta-plot}
 ggplot(dn_lq %>% filter(state == "NC")) + 
   geom_point(mapping = aes(x = longitude, y = latitude,
-  color = establishment), alpha=.20) + 
+  color = establishment), alpha=.50) + 
   labs(
     title= "North Carolina Denny's and La Quinta Locations",
     x = "Longitude", 
@@ -174,11 +174,24 @@ ggplot(dn_lq %>% filter(state == "NC")) +
     )
 ```
 
-#### Does Mitch Hedberg's joke apply? 
+#### Does Mitch Hedberg's joke apply in NC? 
 
 In my opinion, I would agree with Mitch Hedberg that in spanish La Quinta means next to Denny's. When viewing the plot of the locations in North Carolina, almost all but one La Quinta are next to or very near a Denny's.  
 
-
 ### Exercise 12
 
+```{r tx-dennys-laquinta-plot}
+ggplot(dn_lq %>% filter(state == "TX")) + 
+  geom_point(mapping = aes(x = longitude, y = latitude,
+  color = establishment), alpha=.20) + 
+  labs(
+    title= "Texas Denny's and La Quinta Locations",
+    x = "Longitude", 
+    y = "Latitude",
+    tag = "Figure 3"
+    )
+```
 
+#### Does Mitch Hedberg's joke apply in TX? 
+
+Based on the Texas plot, I would say that Mitch Hedberg's joke is still applicable, but is less supported than the joke applying to NC. In Texas there are quite a few La Quinta's that are not next to or near a Denny's.The joke may be more applicable for Texas if it was rephrased as "'La Quinta' is spanish for in Denny's neighborhood".  
