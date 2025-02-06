@@ -132,7 +132,30 @@ California has the most (403) Denny's locations and Delaware has the least (1) D
 
 Texas has the most La Quinta locations, which I don't find surprising as Texas has the second highest population in the U.S., and the La Quinta headquarters are in Texas. 
 
+```{r most-dennys-per-thousand-square-miles}
+dennys %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation"))
+```
+
 ### Exercise 10
+
+```{r dennys-laquinta-single-dataframe}
+dn <- dennys %>%
+  mutate(establishment = "Denny's")
+lq <- laquinta %>%
+  mutate(establishment = "La Quinta")
+dn_lq <- bind_rows(dn, lq)
+```
+
+```{r dennys-laquinta-plot}
+ggplot(dn_lq) + 
+  geom_point(mapping = aes(x = longitude, y = latitude,
+  color = establishment)) + 
+  labs(
+    title= "Denny's and La Quinta U.S. Locations"
+    )
+```
 
 ### Exercise 11
 
