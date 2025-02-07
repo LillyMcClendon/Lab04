@@ -244,9 +244,10 @@ print(laquinta_country)
 ### Exercise 9
 
 ``` r
-dennys %>% 
+dennys_states <- dennys %>% 
   count(state) %>% 
   arrange(desc(n))
+print(dennys_states)
 ```
 
     ## # A tibble: 51 × 2
@@ -265,9 +266,10 @@ dennys %>%
     ## # ℹ 41 more rows
 
 ``` r
-laquinta_country %>% 
+laquinta_country_states <- laquinta_country %>% 
   count(state) %>% 
   arrange(desc(n))
+print(laquinta_country_states)
 ```
 
     ## # A tibble: 48 × 2
@@ -296,29 +298,32 @@ be fewer Denny’s locations.
 
 #### States with most and least La Quinta locations.
 
-Texas has the most La Quinta locations, which I don’t find surprising as
-Texas has the second highest population in the U.S., and the La Quinta
-headquarters are in Texas.
+Texas has the most (237) La Quinta locations, which I don’t find
+surprising as Texas has the second highest population in the U.S., and
+the La Quinta headquarters are in Texas. Maine has the least (1) La
+Quinta locations. I am not surprised by this as they are headquarted in
+a different region of the country, and Maine has a small population.
 
 ``` r
 dennys %>%
   count(state) %>%
-  inner_join(states, by = c("state" = "abbreviation"))
+  inner_join(states, by = c("state" = "abbreviation")) %>% 
+  mutate(per_thous_sqrmi = n / area *1000)
 ```
 
-    ## # A tibble: 51 × 4
-    ##    state     n name                     area
-    ##    <chr> <int> <chr>                   <dbl>
-    ##  1 AK        3 Alaska               665384. 
-    ##  2 AL        7 Alabama               52420. 
-    ##  3 AR        9 Arkansas              53179. 
-    ##  4 AZ       83 Arizona              113990. 
-    ##  5 CA      403 California           163695. 
-    ##  6 CO       29 Colorado             104094. 
-    ##  7 CT       12 Connecticut            5543. 
-    ##  8 DC        2 District of Columbia     68.3
-    ##  9 DE        1 Delaware               2489. 
-    ## 10 FL      140 Florida               65758. 
+    ## # A tibble: 51 × 5
+    ##    state     n name                     area per_thous_sqrmi
+    ##    <chr> <int> <chr>                   <dbl>           <dbl>
+    ##  1 AK        3 Alaska               665384.          0.00451
+    ##  2 AL        7 Alabama               52420.          0.134  
+    ##  3 AR        9 Arkansas              53179.          0.169  
+    ##  4 AZ       83 Arizona              113990.          0.728  
+    ##  5 CA      403 California           163695.          2.46   
+    ##  6 CO       29 Colorado             104094.          0.279  
+    ##  7 CT       12 Connecticut            5543.          2.16   
+    ##  8 DC        2 District of Columbia     68.3        29.3    
+    ##  9 DE        1 Delaware               2489.          0.402  
+    ## 10 FL      140 Florida               65758.          2.13   
     ## # ℹ 41 more rows
 
 ### Exercise 10
@@ -329,7 +334,23 @@ dn <- dennys %>%
 lq <- laquinta %>%
   mutate(establishment = "La Quinta")
 dn_lq <- bind_rows(dn, lq)
+print(dn)
 ```
+
+    ## # A tibble: 1,643 × 7
+    ##    address                    city  state zip   longitude latitude establishment
+    ##    <chr>                      <chr> <chr> <chr>     <dbl>    <dbl> <chr>        
+    ##  1 2900 Denali                Anch… AK    99503    -150.      61.2 Denny's      
+    ##  2 3850 Debarr Road           Anch… AK    99508    -150.      61.2 Denny's      
+    ##  3 1929 Airport Way           Fair… AK    99701    -148.      64.8 Denny's      
+    ##  4 230 Connector Dr           Aubu… AL    36849     -85.5     32.6 Denny's      
+    ##  5 224 Daniel Payne Drive N   Birm… AL    35207     -86.8     33.6 Denny's      
+    ##  6 900 16th St S, Commons on… Birm… AL    35294     -86.8     33.5 Denny's      
+    ##  7 5931 Alabama Highway, #157 Cull… AL    35056     -86.9     34.2 Denny's      
+    ##  8 2190 Ross Clark Circle     Doth… AL    36301     -85.4     31.2 Denny's      
+    ##  9 900 Tyson Rd               Hope… AL    36043     -86.4     32.2 Denny's      
+    ## 10 4874 University Drive      Hunt… AL    35816     -86.7     34.7 Denny's      
+    ## # ℹ 1,633 more rows
 
 ``` r
 ggplot(dn_lq) + 

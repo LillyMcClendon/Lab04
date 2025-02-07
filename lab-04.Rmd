@@ -113,15 +113,17 @@ print(laquinta_country)
 ### Exercise 9
 
 ```{r Dennys-state-most-locations}
-dennys %>% 
+dennys_states <- dennys %>% 
   count(state) %>% 
   arrange(desc(n))
+print(dennys_states)
 ```
 
 ```{r laquinta-state-most-locations}
-laquinta_country %>% 
+laquinta_country_states <- laquinta_country %>% 
   count(state) %>% 
   arrange(desc(n))
+print(laquinta_country_states)
 ```
 
 #### States with most and least Denny's locations 
@@ -132,13 +134,28 @@ California has the most (403) Denny's locations and Delaware has the least (1) D
 
 Texas has the most (237) La Quinta locations, which I don't find surprising as Texas has the second highest population in the U.S., and the La Quinta headquarters are in Texas. Maine has the least (1) La Quinta locations. I am not surprised by this as they are headquarted in a different region of the country, and Maine has a small population.  
 
-```{r most-dennys-per-thousand-square-miles}
-dennys %>%
-  count(state) %>%
-  inner_join(states, by = c("state" = "abbreviation"))
-```
 
 ### Exercise 10
+
+```{r most-dennys-thousand-square-miles}
+dennys %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation")) %>% 
+  mutate(per_thous_sqrmi = n / area *1000) %>% 
+  arrange(desc(per_thous_sqrmi))
+```
+
+```{r most-laquinta-thousand-square-miles}
+laquinta %>%
+  count(state) %>%
+  inner_join(states, by = c("state" = "abbreviation")) %>% 
+  mutate(per_thous_sqrmi = n / area *1000) %>% 
+  arrange(desc(per_thous_sqrmi))
+```
+
+#### State with the most Denny's locations per thousand square miles and state with most La Quinta locations per thousand square miles
+
+Washington D.C. is the state with the most Denny's locations per thousand square miles. Rhode Island is the state with the most La Quinta locations per thousand square miles. 
 
 ```{r dennys-laquinta-single-dataframe}
 dn <- dennys %>%
@@ -146,6 +163,7 @@ dn <- dennys %>%
 lq <- laquinta %>%
   mutate(establishment = "La Quinta")
 dn_lq <- bind_rows(dn, lq)
+print(dn)
 ```
 
 ```{r dennys-laquinta-plot}
