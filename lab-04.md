@@ -129,24 +129,9 @@ There are not any Denny’s locations outside of the U.S.
 ### Exercise 6
 
 ``` r
-dennys %>%
+dennys_country <- dennys %>%
   mutate(country = "United States")
 ```
-
-    ## # A tibble: 1,643 × 7
-    ##    address                        city    state zip   longitude latitude country
-    ##    <chr>                          <chr>   <chr> <chr>     <dbl>    <dbl> <chr>  
-    ##  1 2900 Denali                    Anchor… AK    99503    -150.      61.2 United…
-    ##  2 3850 Debarr Road               Anchor… AK    99508    -150.      61.2 United…
-    ##  3 1929 Airport Way               Fairba… AK    99701    -148.      64.8 United…
-    ##  4 230 Connector Dr               Auburn  AL    36849     -85.5     32.6 United…
-    ##  5 224 Daniel Payne Drive N       Birmin… AL    35207     -86.8     33.6 United…
-    ##  6 900 16th St S, Commons on Gree Birmin… AL    35294     -86.8     33.5 United…
-    ##  7 5931 Alabama Highway, #157     Cullman AL    35056     -86.9     34.2 United…
-    ##  8 2190 Ross Clark Circle         Dothan  AL    36301     -85.4     31.2 United…
-    ##  9 900 Tyson Rd                   Hope H… AL    36043     -86.4     32.2 United…
-    ## 10 4874 University Drive          Huntsv… AL    35816     -86.7     34.7 United…
-    ## # ℹ 1,633 more rows
 
 ### Exercise 7
 
@@ -225,7 +210,8 @@ print(laquinta_international)
 #### La Quinta Locations Update
 
 There are locations (Cancun, Apodaca, Monterrey, Tegucigalpa) in the
-dataset that are not posted on the La Quinta website of locations.
+dataset that are not posted on the La Quinta website of locations. I
+looked up the addresses to determine which country they were located in.
 
 ``` r
 laquinta_country <- laquinta %>%

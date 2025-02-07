@@ -130,7 +130,7 @@ California has the most (403) Denny's locations and Delaware has the least (1) D
 
 #### States with most and least La Quinta locations. 
 
-Texas has the most La Quinta locations, which I don't find surprising as Texas has the second highest population in the U.S., and the La Quinta headquarters are in Texas. 
+Texas has the most (237) La Quinta locations, which I don't find surprising as Texas has the second highest population in the U.S., and the La Quinta headquarters are in Texas. Maine has the least (1) La Quinta locations. I am not surprised by this as they are headquarted in a different region of the country, and Maine has a small population.  
 
 ```{r most-dennys-per-thousand-square-miles}
 dennys %>%
